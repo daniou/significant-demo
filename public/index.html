@@ -136,6 +136,39 @@
             transform: scale(1.05);
         }
 
+    /* Control de la rotación del dispositivo */
+    @media screen and (max-width: 852px) and (orientation: landscape) {
+    /* Cubre toda la pantalla del dispositivo */
+    #rotateScreen {
+        position: fixed;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        /* Gradiente de color de fondo */
+        background: linear-gradient(-45deg, #030a0d, #2980b9, #14222c, #181818);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+
+        /* Con esto ajustamos la posición del texto */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        /* Debemos superponerlo */
+        z-index: 1000;
+    }
+    
+    /* El texto que vamos a mostrar */
+    .mensaje::before {
+        font-family: Montserrat, sans-serif;
+        content: "Por favor, mantenga su dispositivo en posición vertical.";
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+    }
+
     </style>
 </head>
 <body>
@@ -147,10 +180,13 @@
         <div id="spinner"></div>
         <p>El evento aún no ha empezado.<br> <b>¡Mientras tanto, disfruta de la presentación!</b></p>
     </div>
+    <div class="mensaje" id="rotateScreen"></div>
     <video id="myVideo" muted playsinline>
         <source src="demo.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+
+    
 
     <div id="logo">
         
